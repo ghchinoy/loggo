@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -54,6 +55,21 @@ public class MainActivity extends Activity {
 	    	startActivity(i);
     	} else {
     		Log.d(TAG, "Logged in.");
+    	}
+    }
+    
+    /**
+     * React to menu items.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+    	case R.id.menu_logout:
+    		app.setIsLoggedIn(false);
+    		checkLogin();
+    		return true;
+    	default:
+    		return super.onOptionsItemSelected(item);
     	}
     }
 }
